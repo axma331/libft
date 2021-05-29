@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/26 20:01:46 by feschall         ###   ########.fr       */
+/*   Updated: 2021/05/29 11:59:56 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *s)
 {
-	int	i;
-	int	sign;
-	int	num;
+	int			i;
+	int			sign;
+	long int	num;
 
 	i = 0;
 	sign = 1;
@@ -32,6 +32,10 @@ int	ft_atoi(const char *s)
 	while (s[i] && ('0' <= s[i] && s[i] <= '9'))
 	{
 		num = 10 * num + (s[i] - '0') * sign;
+		if (num > INT32_MAX)
+			return (0);
+		if (num < INT32_MIN)
+			return (0);
 		i++;
 	}
 	return (num);
