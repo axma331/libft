@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:17:58 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/27 10:48:15 by feschall         ###   ########.fr       */
+/*   Updated: 2021/05/30 15:50:04 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
 
 int		ft_atoi(const char *str);
+int		ft_atoi_o(const char *str);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
