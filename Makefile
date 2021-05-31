@@ -6,14 +6,13 @@
 #    By: feschall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 17:56:43 by feschall          #+#    #+#              #
-#    Updated: 2021/05/30 20:25:37 by feschall         ###   ########.fr        #
+#    Updated: 2021/05/31 12:28:11 by feschall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
 CC		= gcc
-
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
@@ -25,28 +24,58 @@ SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_atoi_o.c
 
-OBJ	:= $(SRCS:%.c=%.o)
 OBJDIR	:= .obj
+OBJS	:= $(SRCS:%.c=$(OBJDIR)/%.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ) $(OBJDIR)
-	@echo Сборка libft
-	@$(CC) $(CFLAGS) $(SRCS) -c
-	@ar rc $@ $(OBJ)
-	@mv $(OBJ) $(OBJDIR)
+$(NAME):	$(OBJS)
+	@echo "$(FONT1)Сборка $(FONT4)$@"
+	@ar rc $@ $(OBJS)
+	@ranlib $@
 	
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@$(CC) -c $(CFLAGS) -o $@ $<
+	@echo "$(FONT1)Создание $(FONT5)$@"
+
 $(OBJDIR):
 	@mkdir -p $@
-
+	
 clean:
-	@rm -rf $(OBJDIR) *.o
+	@rm -rf $(OBJDIR)
 
 fclean:	clean
-	@echo Очистка libft
+	@echo "$(FONT1)Очистка $(FONT6) libft"
 	@rm -rf $(NAME)
 
 re:	fclean all
 
 .PHONY: re all clean fclean
 
+#-c говорит не запускать линкер, потому что нет main
+#-g порождает отладочную информацию в родном формате операционной системы
+#включает использование дополнительной отладочной информации, 
+#которую может использовать только GDB; 
+#эта дополнительная отладочная информация делает работу отладки в GDB лучше, но может, 
+#вероятно испортить работу других отладчиков, или помешать им прочитать программу.
+FLAGS = -Wall -Wextra -Werror -c -g
+
+FONT00 = \033[1m #жирный шрифт
+FONT01 = \033[4m #подчеркивание
+#COLOR12 = \033[6;35m - можно совмещать \033[6 - цвет шрифта ;35m - цвет фона
+COLOR0 = \033[47m #серый цвет фона
+FONT0 = \033[37m #серый цвет шрифта
+COLOR1 = \033[46m #цвет морской волны фона		
+FONT1 = \033[36m #цвет морской волны шрифта
+COLOR2 = \033[45m #фиолетовый цвет фона
+FONT2 = \033[35m #фиолетовый цвет шрифта
+COLOR3 = \033[44m #синий цвет фона
+FONT3 = \033[34m #синий цвет шрифта
+COLOR4 = \033[43m #желтый цвет фона
+FONT4 = \033[33m #желтый цвет шрифта
+COLOR5 = \033[42m #зелёный цвет фона
+FONT5 = \033[32m #зелёный цвет шрифта
+COLOR6 = \033[41m #красный цвет фона
+FONT6 = \033[31m #красный цвет шрифта
+COLOR7 = \033[40m #чёрный цвет фона
+FONT7 = \033[30m #чёрный цвет шрифта
