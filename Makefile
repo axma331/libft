@@ -6,14 +6,14 @@
 #    By: feschall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 17:56:43 by feschall          #+#    #+#              #
-#    Updated: 2021/05/31 12:28:11 by feschall         ###   ########.fr        #
+#    Updated: 2021/05/31 13:49:36 by feschall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -c -g
 
 SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
@@ -24,19 +24,19 @@ SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_atoi_o.c
 
-OBJDIR	:= .obj
+OBJDIR	:= .objlib
 OBJS	:= $(SRCS:%.c=$(OBJDIR)/%.o)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	@echo "$(FONT1)Сборка $(FONT4)$@"
+	@echo "$(FONT1)Создан$(FONT4)$@$(FONT99)"
 	@ar rc $@ $(OBJS)
 	@ranlib $@
 	
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	@$(CC) -c $(CFLAGS) -o $@ $<
-	@echo "$(FONT1)Создание $(FONT5)$@"
+	@echo "$(FONT1)Создан$(FONT5)$@$(FONT99)"
+	@$(CC) $(CFLAGS) -o $@ $<
 
 $(OBJDIR):
 	@mkdir -p $@
@@ -45,7 +45,7 @@ clean:
 	@rm -rf $(OBJDIR)
 
 fclean:	clean
-	@echo "$(FONT1)Очистка $(FONT6) libft"
+	@echo "$(FONT1)Очистка$(FONT6)libft$(FONT99)"
 	@rm -rf $(NAME)
 
 re:	fclean all
@@ -58,8 +58,8 @@ re:	fclean all
 #которую может использовать только GDB; 
 #эта дополнительная отладочная информация делает работу отладки в GDB лучше, но может, 
 #вероятно испортить работу других отладчиков, или помешать им прочитать программу.
-FLAGS = -Wall -Wextra -Werror -c -g
 
+FONT99 = \033[0m #сброс цвета
 FONT00 = \033[1m #жирный шрифт
 FONT01 = \033[4m #подчеркивание
 #COLOR12 = \033[6;35m - можно совмещать \033[6 - цвет шрифта ;35m - цвет фона
