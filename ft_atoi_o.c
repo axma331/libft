@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2021/05/30 18:15:52 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:44:43 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_atoi_o(const char *s)
 	i = 0;
 	sign = 1;
 	num = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i] && (('\t' <= s[i] && s[i] <= '\r') || s[i] == ' '))
 		i++;
 	if (s[i] == '-' || s[i] == '+')
@@ -37,6 +39,8 @@ int	ft_atoi_o(const char *s)
 		if (num < INT32_MIN)
 			return (0);
 		i++;
+		if (ft_isalpha(s[i]))
+			return (0);
 	}
 	return (num);
 }

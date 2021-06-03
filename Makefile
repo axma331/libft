@@ -6,7 +6,7 @@
 #    By: feschall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 17:56:43 by feschall          #+#    #+#              #
-#    Updated: 2021/06/01 09:23:20 by feschall         ###   ########.fr        #
+#    Updated: 2021/06/01 13:07:46 by feschall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ clean:
 
 fclean:	clean
 	@rm -rf $(NAME)
-	@echo "$(CLRCY)Очистка$(CLRRE)libft$(CLRRS)"
+	@echo "$(CLRCY)Удаление$(CLRRE)$(NAME)$(CLRRS)"
 
 re:	fclean all
 
