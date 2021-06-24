@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:40:56 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/26 20:27:43 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 01:13:48 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	len(char const *s, char c)
 	return (i);
 }
 
-static int		count(char const *s, char c)
+static int	count(char const *s, char c)
 {
 	int	i;
 	int	l;
@@ -41,7 +41,7 @@ static int		count(char const *s, char c)
 	return (l);
 }
 
-static char		**freelloc(char **s, int i)
+static char	**freelloc(char **s, int i)
 {
 	while (i != 0)
 	{
@@ -52,7 +52,7 @@ static char		**freelloc(char **s, int i)
 	return (0);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		i;

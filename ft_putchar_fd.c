@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:55:48 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/26 16:58:09 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 01:08:20 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	unsigned int ch;
+	unsigned int	ch;
 
 	ch = c;
 	write(fd, &ch, 1);

@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 17:53:50 by feschall          #+#    #+#             */
-/*   Updated: 2021/05/31 16:38:02 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 01:14:21 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t n;
+	size_t	i;
+	size_t	n;
 
 	i = 0;
 	while (dst[i] != '\0' && i < dstsize)

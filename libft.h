@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:17:58 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/24 15:07:08 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 00:37:09 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+void	output_and_exit(char *s);
 
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar_fd(char c, int fd);

@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 15:40:43 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/26 18:30:17 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 01:15:41 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = ft_strlen(s1);
 	while (i && ft_strchr(set, s1[i]))
 		i--;
-	str = ft_substr((char*)s1, 0, i + 1);
+	str = ft_substr((char *)s1, 0, i + 1);
 	return (str);
 }
