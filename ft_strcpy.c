@@ -6,15 +6,15 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:11:22 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/24 14:47:41 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/24 15:08:04 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	*ft_strcpy(char *s2, const char *s1)
+char	*ft_strcpy(char *s2, char *s1)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!s1 || !s2)
