@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/09 14:06:29 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 00:50:50 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	ft_atoi_o(const char *s)
 	{
 		num = 10 * num + (s[i] - '0') * sign;
 		if (num > INT32_MAX || num < INT32_MIN)
-		{
-			write (2, "Error\n", 6);
-			exit (0);
-		}
+			output_and_exit("Error");
 		i++;
 	}
 	return (num);
