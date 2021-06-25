@@ -6,7 +6,7 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:40:56 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/25 01:13:48 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 19:33:19 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,40 @@ static char	**freelloc(char **s, int i)
 	return (0);
 }
 
+static	char	**for_split(char const *s, char c, char	**arr, int i)
+{
+	int	j;
+	int	m;
+
+	j = 0;
+	m = 0;
+	while (s[i] && s[i] == c)
+		i++;
+	if (s[i])
+	{
+		arr[m] = (char *)malloc(sizeof(char) * (len(s + i, c) + 1));
+		if (!arr[m])
+			return (freelloc(arr, m));
+		while (s[i] && s[i] != c)
+			arr[m][j++] = s[i++];
+		arr[m++][j] = 0;
+	}
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		i;
-	int		j;
 	int		m;
 
 	i = 0;
 	m = 0;
-	if (!s || !(arr = (char **)malloc(sizeof(char *) * (count(s, c) + 1))))
+	arr = (char **)malloc(sizeof(char *) * (count(s, c) + 1));
+	if (!s || !arr)
 		return (0);
 	while (s[i])
-	{
-		j = 0;
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i])
-		{
-			if (!(arr[m] = (char *)malloc(sizeof(char) * (len(s + i, c) + 1))))
-				return (freelloc(arr, m));
-			while (s[i] && s[i] != c)
-				arr[m][j++] = s[i++];
-			arr[m++][j] = 0;
-		}
-	}
+		for_split(s, c, arr, i);
 	arr[m] = 0;
 	return (arr);
 }
