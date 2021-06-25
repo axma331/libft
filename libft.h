@@ -6,15 +6,19 @@
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:17:58 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/25 00:37:09 by feschall         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:54:46 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 void	output_and_exit(char *s);
 
@@ -60,5 +64,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 
 char	**ft_split(char const *s, char c);
+int		get_next_line(int fd, char **line);
 
 #endif
