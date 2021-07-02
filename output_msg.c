@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   output_msg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2021/06/25 00:37:04 by feschall         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:35:29 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	output_and_exit(char *s)
+void	output_and_exit(char *s, int errno)
 {
 	write (2, s, ft_strlen(s));
 	write (2, "\n", 1);
-	exit (0);
+	exit (errno);
 }
