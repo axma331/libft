@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   output_msg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 19:34:47 by feschall          #+#    #+#             */
-/*   Updated: 2021/07/16 10:50:10 by feschall         ###   ########.fr       */
+/*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
+/*   Updated: 2021/07/16 10:58:20 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_exit(char *msg, int errno)
 {
-	void	*mem;
-
-	mem = malloc(count * (size));
-	if (mem != NULL)
-		ft_bzero(mem, size * count);
-	return (mem);
+	write (STDERR_FILENO, msg, ft_strlen(msg));
+	write (STDERR_FILENO, "\n", 1);
+	exit (errno);
 }
