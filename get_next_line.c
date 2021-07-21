@@ -68,7 +68,7 @@ char	check_n(char **line, char *buff, char *end)
 
 int	check_sb(char **line, char *buff, int fd, char *end)
 {
-	int sb;
+	int	sb;
 
 	sb = 1;
 	while (sb)
