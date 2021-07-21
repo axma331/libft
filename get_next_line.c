@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 16:26:03 by feschall          #+#    #+#             */
-/*   Updated: 2021/07/15 09:33:10 by feschall         ###   ########.fr       */
+/*   Updated: 2021/07/21 10:07:49 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,19 @@ char	check_n(char **line, char *buff, char *end)
 	return (0);
 }
 
-int	check_sb(char **line, char *buff, int sb, char *end)
+int	check_sb(char **line, char *buff, int fd, char *end)
 {
-	while (sb > 0)
+	int sb;
+
+	sb = 1;
+	while (sb)
 	{
+		sb = read(fd, buff, BUFFER_SIZE);
 		buff[sb] = '\0';
 		if (check_n(line, buff, end) == 1)
-			return (1);
+			return (-1);
 	}
-	return (0);
+	return (sb);
 }
 
 int	get_next_line(int fd, char **line)
@@ -94,8 +98,8 @@ int	get_next_line(int fd, char **line)
 	*line = ft_strdup("");
 	if (check_end(line, end, buff) == 1)
 		return (1);
-	sb = read(fd, buff, BUFFER_SIZE);
-	if (check_sb(line, buff, sb, end))
+	sb = check_sb(line, buff, fd, end);
+	if (sb == -1)
 		return (1);
 	if (sb == 0 && *end)
 		ft_bzero(end, ft_strlen(end));
