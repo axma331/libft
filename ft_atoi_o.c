@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_o.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: feschall <feschall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2021/07/16 10:57:11 by feschall         ###   ########.fr       */
+/*   Updated: 2021/12/16 11:09:05 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi_o(const char *s)
 	{
 		num = 10 * num + (s[i] - '0') * sign;
 		if (num > INT32_MAX || num < INT32_MIN)
-			ft_exit("Error", EXIT_FAILURE);
+			ft_exit("integer overflow", EXIT_FAILURE);
 		i++;
 	}
 	return (num);

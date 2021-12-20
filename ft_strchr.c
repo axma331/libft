@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: feschall <feschall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 18:29:44 by feschall          #+#    #+#             */
-/*   Updated: 2020/11/25 19:24:55 by feschall         ###   ########.fr       */
+/*   Updated: 2021/12/20 12:33:14 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (str[i] == '\0' && sym == '\0')
 		return (str + i);
-	return (0);
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: feschall <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: feschall <feschall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 17:56:43 by feschall          #+#    #+#              #
-#    Updated: 2021/07/21 17:59:25 by feschall         ###   ########.fr        #
+#    Updated: 2021/12/20 12:48:20 by feschall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,15 +48,23 @@ clean:
 
 fclean:	clean
 	@rm -rf $(NAME)
+	@rm -rf .gitpush
 	@echo "$(CLRCY)Удаление$(CLRRE)$(NAME)$(CLRRS)"
 
 re:	fclean all
 
-gitpush: fclean
-	git status
-	git add $(SRCS) $(HEAD) Makefile
-	git commit -m "New edition"
-	git push
+gitpush:			fclean
+					sh .gitpush || {									\
+					echo '#!/bin/sh' > .gitpush;						\
+					echo 'echo .gitpush >> .gitignore' >> .gitpush;		\
+					echo 'git status' >> .gitpush;						\
+					echo 'git add .' >> .gitpush;						\
+					echo 'git status' >> .gitpush;						\
+					echo 'echo Enter commits name: ' >> .gitpush;		\
+					echo 'read commits_name' >> .gitpush;				\
+					echo 'git commit -m "$$commits_name"' >> .gitpush;	\
+					echo 'git push' >> .gitpush;						\
+					sh .gitpush;}
 
 .PHONY: re all clean fclean
 

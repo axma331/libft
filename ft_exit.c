@@ -3,18 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feschall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: feschall <feschall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:59:38 by feschall          #+#    #+#             */
-/*   Updated: 2021/07/27 20:27:39 by feschall         ###   ########.fr       */
+/*   Updated: 2021/12/11 11:51:56 by feschall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_exit(char *msg, int errno)
+void	ft_exit(const char *msg, int errnum)
 {
-	write (1 + errno, msg, ft_strlen(msg));
-	write (1 + errno, "\n", 1);
-	exit (errno);
+	if (errnum)
+	{
+		write (2, "\033[31mError: ", ft_strlen("\033[31mError: "));
+		write (2, msg, ft_strlen(msg));
+		write (2, "\033[0m\n", 5);
+	}
+	else
+	{
+		write (2, "\033[32m", ft_strlen("\033[32m"));
+		write (1, msg, ft_strlen(msg));
+		write (1, "\033[0m\n", 5);
+	}
+	exit(errnum);
 }
