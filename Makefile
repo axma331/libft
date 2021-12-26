@@ -6,64 +6,64 @@
 #    By: feschall <feschall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 17:56:43 by feschall          #+#    #+#              #
-#    Updated: 2021/12/26 08:18:49 by feschall         ###   ########.fr        #
+#    Updated: 2021/12/26 08:24:28 by feschall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
+NAME			= libft.a
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -c -g
+CC				= gcc
+CFLAGS			= -Wall -Wextra -Werror -c -g
 
-SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
-		ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
-		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-		ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c ft_substr.c \
-		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
-		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-		ft_atoi_o.c ft_strcmp.c ft_strcpy.c ft_exit.c get_next_line.c
+SRCS			= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
+				ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
+				ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
+				ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+				ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c ft_substr.c \
+				ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
+				ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+				ft_atoi_o.c ft_strcmp.c ft_strcpy.c ft_exit.c get_next_line.c
 
-OBJDIR	:= .objlib
-OBJS	:= $(SRCS:%.c=$(OBJDIR)/%.o)
-HEAD	= libft.h
+OBJDIR			:= .objlib
+OBJS			:= $(SRCS:%.c=$(OBJDIR)/%.o)
+HEAD			:= libft.h
 
-all:	$(NAME)
+all:			$(NAME)
 
-$(NAME):	$(OBJS) $(HEAD)
-	@ar rc $@ $(OBJS)
-	@ranlib $@
-	@echo "$(CLRCY)create$(CLREL) $@$(CLRRS)"
+$(NAME):		$(OBJS) $(HEAD)
+				ar rc $@ $(OBJS)
+				ranlib $@
+				@echo "$(CLRCY)create$(CLREL) $@$(CLRRS)"
 	
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -o $@ $<
+$(OBJDIR)/%.o:	%.c | $(OBJDIR)
+				$(CC) $(CFLAGS) -o $@ $<
 
 $(OBJDIR):
-	@mkdir -p $@
+				@mkdir -p $@
 	
 clean:
-	rm -rf $(OBJDIR)
+				rm -rf $(OBJDIR)
 
-fclean:	clean
-	rm -rf $(NAME)
-	@rm -rf .gitpush
+fclean:			clean
+				rm -rf $(NAME)
+				@rm -rf .gitpush
 
-re:	fclean all
+re:				fclean all
 
-gitpush:			fclean
-					sh .gitpush || {									\
-					echo '#!/bin/sh' > .gitpush;						\
-					echo 'echo .gitpush >> .gitignore' >> .gitpush;		\
-					echo 'git status' >> .gitpush;						\
-					echo 'git add .' >> .gitpush;						\
-					echo 'git status' >> .gitpush;						\
-					echo 'echo Enter commits name: ' >> .gitpush;		\
-					echo 'read commits_name' >> .gitpush;				\
-					echo 'git commit -m "$$commits_name"' >> .gitpush;	\
-					echo 'git push' >> .gitpush;						\
-					sh .gitpush;}
+gitpush:		fclean
+				sh .gitpush || {									\
+				echo '#!/bin/sh' > .gitpush;						\
+				echo 'echo .gitpush >> .gitignore' >> .gitpush;		\
+				echo 'git status' >> .gitpush;						\
+				echo 'git add .' >> .gitpush;						\
+				echo 'git status' >> .gitpush;						\
+				echo 'echo Enter commits name: ' >> .gitpush;		\
+				echo 'read commits_name' >> .gitpush;				\
+				echo 'git commit -m "$$commits_name"' >> .gitpush;	\
+				echo 'git push' >> .gitpush;						\
+				sh .gitpush;}
 
-.PHONY: re all clean fclean
+.PHONY: 		re all clean fclean
 
 #-c говорит не запускать линкер, потому что нет main
 #-g порождает отладочную информацию в родном формате операционной системы
